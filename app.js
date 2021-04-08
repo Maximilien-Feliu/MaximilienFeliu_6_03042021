@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const User = require('./models/User');
+const userRoutes = require('./routes/user');
+
 mongoose.connect('mongodb+srv://maximilienFeliu3540:openclassrooms122020@cluster0.rthcd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
 {
     useNewUrlParser: true,
@@ -21,14 +24,6 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.post('/api/auth/signup', (req, res, next) => {
-    res.status(201).json({
-        message: 'objet créé !'
-    });
-});
-
-app.use('/api/sauces', (req, res, next) => {
-    res.status(200).json();
-});
+app.post('/api/auth', userRoutes);
 
 module.exports = app;
