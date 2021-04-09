@@ -1,6 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+mongoose.set('useCreateIndex', true);
+
+const cors = require('cors');
+
 
 const User = require('./models/User');
 const userRoutes = require('./routes/user');
@@ -22,8 +26,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(bodyParser.json());
+app.use(express.json());
 
-app.post('/api/auth', userRoutes);
+app.use('/api/auth', userRoutes);
 
 module.exports = app;
