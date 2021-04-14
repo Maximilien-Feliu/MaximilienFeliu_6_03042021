@@ -5,9 +5,11 @@ mongoose.set('useCreateIndex', true);
 
 const cors = require('cors');
 
-
 const User = require('./models/User');
 const userRoutes = require('./routes/user');
+
+const Sauces = require('./models/Sauces');
+const saucesRoutes = require('./routes/sauces');
 
 mongoose.connect('mongodb+srv://maximilienFeliu3540:openclassrooms122020@cluster0.rthcd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
 {
@@ -29,5 +31,6 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.use('/api/auth', userRoutes);
+app.use('/api/sauces', saucesRoutes);
 
 module.exports = app;

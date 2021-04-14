@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const saucesCtrl = require('../controllers/sauces');
+const auth = require('../middleware/auth');
 
-router.get('/', saucesCtrl.getAllSauces);
-router.get('/:id');
+router.post('/', auth, saucesCtrl.createSauces);
+router.get('/', auth, saucesCtrl.getAllSauces);
+router.get('/:id', auth, saucesCtrl.getOneSauce);
 
 module.exports = router;
