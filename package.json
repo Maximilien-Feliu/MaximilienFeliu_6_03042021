@@ -11,10 +11,21 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
+    "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-mongo-sanitize": "^2.0.2",
+    "express-session": "^1.17.1",
+    "helmet": "^4.5.0",
+    "hpp": "^0.2.3",
     "jsonwebtoken": "^8.5.1",
+    "maskdata": "^1.1.4",
+    "mongo-express-sanitize": "^1.0.1",
     "mongoose": "^5.12.3",
-    "mongoose-unique-validator": "^2.0.3"
+    "mongoose-unique-validator": "^2.0.3",
+    "password-validator": "^5.1.1",
+    "toobusy-js": "^0.5.1",
+    "validator": "^13.6.0"
   }
 }

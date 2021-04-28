@@ -10,11 +10,13 @@ const User = require('../models/User');         // import the user model
 /*****  create a new user   *****/
 exports.signup = (req, res, next) => {
 
+    const bufEmail = Buffer.from(req.body.email);                                   // handle raw binary data
+
 /*****  hash the password then save informations *****/
     bcrypt.hash(req.body.password, 10)                                              // 10 is the salt (how many times the hashage has to be executed)
     .then(hash => {
         const user = new User({
-            email: req.body.email,
+            email: bufEmail.toString('hex'),                                        // encode the buffed data
             password: hash
         });
         user.save()
@@ -26,7 +28,10 @@ exports.signup = (req, res, next) => {
 
 /*****  login a user  *****/
 exports.login = (req, res, next) => {
-    User.findOne({ email: req.body.email })                                         // find the unique email 
+
+    const bufEmail = Buffer.from(req.body.email);
+
+    User.findOne({ email: bufEmail.toString('hex') })                               // find the unique email 
     .then(user => {
         if (!user) {
             return res.status(401).json({ error: 'Utilisateur non trouvé !'});
